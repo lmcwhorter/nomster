@@ -1,5 +1,6 @@
-require_relative 'boot'
+# require_relative 'boot'
 
+require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -14,8 +15,7 @@ module Nomster
     # Added the fonts path February 12, 2017
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
-    # Precompile additional assets noted February 12, 2017
-    config.assets.precompile += %w( .woff .woff2 )
+    config.assets.precompile += %w( .svg .eot .woff .woff2 .ttf )
 
   end
 end
