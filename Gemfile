@@ -53,3 +53,5 @@ gem 'simple_form'
 
 # Gemfile to add latest version of will_paginate
 gem 'will_paginate'
+
+gem "font-awesome-rails"
