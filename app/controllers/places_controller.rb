@@ -21,13 +21,14 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     @comment = Comment.new
+
   end
 
   def edit
     @place = Place.find(params[:id])
 
     if @place.user != current_user
-      return render text: 'Not Allowed', status: :forbidden
+      return render text: 'You are not authorized to access this page', status: :forbidden
     end
   end
 
@@ -35,14 +36,13 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     if @place.user != current_user
 #     return render text: 'Not Allowed', status: :forbidden
-      return render :text => 'Not Allowed', status => :forbidden
+      return render :text => 'You are not authorized to access this page', status => :forbidden
     end
 
     @place.update_attributes(place_params)
     if @place.valid?
       redirect_to root_path
     else
-#      render :edit, status: :unprocessable_entity
       render :edit, :status => :unprocessable_entity
     end
   end
@@ -50,7 +50,7 @@ class PlacesController < ApplicationController
   def destroy
     @place = Place.find(params[:id])
     if @place.user != current_user
-      return render text: 'Not Allowed', status: :forbidden
+      return render text: 'You are not authorized to access this page', status: :forbidden
     end
     redirect_to root_path
   end
